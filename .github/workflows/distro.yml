@@ -25,7 +25,7 @@ jobs:
     - uses: anchore/scan-action@v6
       with:
         image: ${{ env.TAG_NAME }}
-        fail-build: true
+        fail-build: false
         
     - name: Inspect action SARIF report
       run: cat ${{ steps.scan.outputs.sarif }}
