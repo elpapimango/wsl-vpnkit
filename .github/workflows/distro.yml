@@ -11,7 +11,8 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    #runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, X64]
     permissions:
       checks: write
     steps:
