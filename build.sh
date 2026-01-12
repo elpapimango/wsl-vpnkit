@@ -18,3 +18,4 @@ CONTAINER_ID=$(${DOCKER} create ${TAG_NAME})
 ${DOCKER} export "${CONTAINER_ID}" | gzip > ${DUMP}
 ${DOCKER} container rm "${CONTAINER_ID}"
 ls -la ${DUMP}
+
