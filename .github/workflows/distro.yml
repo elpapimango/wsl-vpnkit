@@ -23,6 +23,7 @@ jobs:
         docker build -t $TAG_NAME -f ./distro/.dockerfile --build-arg REF=$RUN_URL --build-arg VERSION=${GITHUB_REF#refs/tags/} .
 
     - uses: anchore/scan-action@v6
+    id: scan
       with:
         image: ${{ env.TAG_NAME }}
         fail-build: false
