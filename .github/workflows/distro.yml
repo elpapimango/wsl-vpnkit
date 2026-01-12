@@ -25,7 +25,11 @@ jobs:
     - uses: anchore/scan-action@v6
       with:
         image: ${{ env.TAG_NAME }}
-
+        fail-build: true
+        
+    - name: Inspect action SARIF report
+      run: cat ${{ steps.scan.outputs.sarif }}
+      
     - name: Package
       run: |
         CONTAINER_ID=$(docker create $TAG_NAME)
