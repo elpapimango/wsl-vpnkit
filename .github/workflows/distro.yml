@@ -16,13 +16,13 @@ jobs:
     permissions:
       checks: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
 
     - name: Build
       run: |
         docker build -t $TAG_NAME -f ./distro/.dockerfile --build-arg REF=$RUN_URL --build-arg VERSION=${GITHUB_REF#refs/tags/} .
 
-    - uses: anchore/scan-action@v3
+    - uses: anchore/scan-action@v6
       with:
         image: ${{ env.TAG_NAME }}
 
@@ -34,7 +34,7 @@ jobs:
         ls -la wsl-vpnkit.tar.gz
 
     - name: Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wsl-vpnkit
         path: |
